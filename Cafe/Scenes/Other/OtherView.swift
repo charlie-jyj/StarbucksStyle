@@ -19,7 +19,7 @@ struct OtherView: View {
                 ForEach(Menu.allCases){ section in
                     Section(header: Text(section.title)){
                         ForEach(section.menu, id: \.self) { menu in
-                            Text(menu)
+                            NavigationLink(destination: Text(menu)) { Text(menu) }
                         }
                     }
                     
@@ -28,7 +28,7 @@ struct OtherView: View {
                 .listStyle(.grouped)
                 .navigationTitle("Other")
                 .toolbar {
-                    NavigationLink(destination: Text("destination")){
+                    NavigationLink(destination: SettingView()){
                         Image(systemName: "gear")
                     }
                 }
