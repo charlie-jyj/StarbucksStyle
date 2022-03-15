@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject var viewModel = HomeViewModel()
     var body: some View {
         ScrollView{
             VStack(spacing: 28.0) {
-                HeaderView()
-                MenuSuggestionSectionView()
-                EventSectionView()
+                HeaderView(isNeedToReload: $viewModel.isNeedToReload)
+                MenuSuggestionSectionView(coffeeMenu: $viewModel.coffeeMenu)
+                EventSectionView(events: $viewModel.events)
             }
         }
     }
